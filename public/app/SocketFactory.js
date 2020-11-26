@@ -1,5 +1,5 @@
 "use strict";
 
 var Socket = (function () {
-    return io.connect();
+    return io();
 })();

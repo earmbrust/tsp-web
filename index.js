@@ -3,7 +3,7 @@
 var express = require('express'),
     app = express(),
     http = require('http').createServer(app),
-    io = require('socket.io').listen(http),
+    io = require('socket.io')(http),
     chalk = require('chalk');
 
 app.set('ipaddr', '0.0.0.0');
@@ -19,7 +19,7 @@ app.get('/', function (request, response) {
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
 app.use('/app', express.static(__dirname + '/public/app'));
 app.use('/assets', express.static(__dirname + '/public/assets'));
-
+app.use('/scripts', express.static(__dirname + '/public/scripts'));
 // === HTTP Controllers ===
 require('./src/api/controllers/task')(app);
 
